@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Filter, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useProducts } from '../hooks/useProducts';
 import { ProductGrid } from '../components/ProductGrid';
 import { FilterSidebar } from '../components/FilterSidebar';
 
 export const ProductsPage = () => {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   
   const {
@@ -51,17 +50,8 @@ export const ProductsPage = () => {
             </div>
           </form>
 
-          {/* Mobile Filter Toggle */}
-          <div className="flex lg:hidden justify-between items-center mb-6">
-            <button
-              onClick={() => setIsFilterOpen(true)}
-              className="btn-outline flex items-center space-x-2"
-            >
-              <Filter className="w-4 h-4" />
-              <span>Filters</span>
-            </button>
-            
-            {/* Results count */}
+          {/* Mobile Results Count */}
+          <div className="flex lg:hidden justify-end items-center mb-6">
             <div className="text-sm text-gray-600">
               {loading ? 'Loading...' : `${products.length} products found`}
             </div>
